@@ -1,4 +1,4 @@
-# ТЗ для событий Sign Up и Add Payment Info — bloxfit.ai
+# ТЗ для событий Sign Up и Add Payment Info
 
 ---
 
