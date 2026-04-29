@@ -37,28 +37,37 @@ dataLayer.push({
   event: "add_payment_info",
   ecommerce: {
     currency: "USD",
-    value: 30.03,
-    coupon: "SUMMER_FUN",
-    payment_type: "Credit Card",
+    value: 4.99,          // цена выбранного плана
+    payment_type: "<string>", // "Credit Card" | "PayPal" | etc.
     items: [
-    {
-      item_id: "SKU_12345",
-      item_name: "Pro",
-      coupon: "SUMMER_FUN",
-      discount: 2.22,
-      index: 0,
-      item_brand: "Google",
-      item_category: "Apparel",
-      item_category2: "Adult",
-      item_variant: "green",
-      price: 10.01,
-      quantity: 3
-    }
+      {
+        item_id: "<string>",       // "pro_monthly" | "max_monthly"
+        item_name: "<string>",     // "Pro" | "Max"
+        item_category: "subscription",
+        price: 4.99,               // цена выбранного плана
+        quantity: 1
+      }
     ]
   }
 });
 ```
 
-| Параметр | Тип | Обязателен | Описание |
-|----------|-----|------------|----------|
-| `payment_type` | string | да | Тип платёжного метода |
+**Значения `item_id` и `price` по планам:**
+
+| План | `item_id`       | `price` |
+|------|-----------------|---------|
+| Pro  | `pro_monthly`   | `4.99`  |
+| Max  | `max_monthly`   | `14.99` |
+
+**Все параметры события:**
+
+| Параметр                | Тип    | Обязателен | Описание                       |
+|-------------------------|--------|------------|--------------------------------|
+| `currency`              | string | да         | Валюта — всегда `"USD"`        |
+| `value`                 | number | да         | Цена выбранного плана          |
+| `payment_type`          | string | да         | Тип платёжного метода          |
+| `items[].item_id`       | string | да         | Идентификатор плана            |
+| `items[].item_name`     | string | да         | Название плана                 |
+| `items[].item_category` | string | да         | Всегда `"subscription"`        |
+| `items[].price`         | number | да         | Цена плана                     |
+| `items[].quantity`      | number | да         | Всегда `1`                     |
