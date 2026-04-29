@@ -51,7 +51,8 @@ dataLayer.push({
 **Смысл:** пользователь успешно добавил платёжные данные (ответ платёжного провайдера подтвердил сохранение).
 
 ```js
-dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+dataLayer.push({ ecommerce: null, user_id: "<user_id>" });  // Clear the previous ecommerce object and set user_id
+
 dataLayer.push({
   event: "add_payment_info",
   ecommerce: {
