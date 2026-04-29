@@ -55,7 +55,7 @@ dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
 dataLayer.push({
   event: "add_payment_info",
   ecommerce: {
-    currency: "USD",
+    currency: "<string>",  // "USD" | "EUR" | "GBP"
     value: 4.99,          // цена выбранного плана
     payment_type: "<string>", // "Credit Card" | "PayPal" | etc.
     items: [
@@ -82,7 +82,7 @@ dataLayer.push({
 
 | Параметр                | Тип    | Обязателен | Описание                       |
 |-------------------------|--------|------------|--------------------------------|
-| `currency`              | string | да         | Валюта — всегда `"USD"`        |
+| `currency`              | string | да         | `"USD"`, `"EUR"`, `"GBP"`     |
 | `value`                 | number | да         | Цена выбранного плана          |
 | `payment_type`          | string | да         | Тип платёжного метода          |
 | `items[].item_id`       | string | да         | Идентификатор плана            |
