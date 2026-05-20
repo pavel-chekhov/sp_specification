@@ -1,4 +1,4 @@
-# В\[SP\] События  eCommerce GA4
+# \[SP\] События  eCommerce GA4
 
 # Обновление от 2026-04-23
 
@@ -7,7 +7,7 @@
 * language \- код из двух букв, как в URL (en)  
 * currency \- код из трех букв (usd)  
 * game \- код игры (такой же, как в URL)  
-  В элемент item добавить поле с именем item\_group\_id и значением \<game\> \+ "\_" \+ \<base\_sku\> (low case). 
+  В элемент item добавить поле с именем item\_group\_id и значением \<game\> \+ "\_" \+ \<base\_sku\> (low case).
 
 # Обновление от 2025-12-04
 
@@ -35,7 +35,7 @@
 1. dataLayer.push({ ecommerce: null,  game: undefined});  // Clear the previous ecommerce object and variable game.  
 2. dataLayer.push({event: "\<имя события\>",  ecommerce: {\<объект\>}, game: "\<название игры\>"); // имя события и объект ecommerce
 
-### Объект ecommerce содержит обязательные и необязательные свойства:
+### Объект ecommerce содержит обязательные и необязательные свойства
 
 1. value \- тип данные: число с точкой  
 2. currency \- типа данных: текст (код валюты из трех букв)  
@@ -61,10 +61,10 @@
 
 [https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client\_type=gtm\#view\_item](https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#view_item)
 
-### Пример:
+### Пример
 
 ```js
-dataLayer.push({ ecommerce: null, game: undefined});  // Clear the previous ecommerce object and game.
+dataLayer.push({ecommerce: null, game: undefined});  // Clear the previous ecommerce object and game.
 
 dataLayer.push({
   event: "view_item",
@@ -93,10 +93,10 @@ dataLayer.push({
 
 [https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client\_type=gtm\#add\_to\_cart](https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#add_to_cart)
 
-### Пример:
+### Пример
 
 ```js
-dataLayer.push({ ecommerce: null, game: undefined});  // Clear the previous ecommerce object and game.
+dataLayer.push({ecommerce: null, game: undefined});  // Clear the previous ecommerce object and game.
 
 dataLayer.push({
   event: "add_to_cart",
@@ -126,10 +126,10 @@ dataLayer.push({
 
  УСПЕХ по нажатию на кнопки "Купить", т.е. если есть кейсы, когда нажатие на кнопку не приводит к следующему шагу (готовности пэта к выводу в игру), то событие не отправляется (например, нет денег на аккаунте \- я не знаю хорошо флоу))
 
-### Пример:
+### Пример
 
 ```js
-dataLayer.push({ ecommerce: null, game: undefined, user_id: "<user id>" });  // Clear the previous ecommerce object & game + запись значения user_id.
+dataLayer.push({ecommerce: null, game: undefined, user_id: "<user id>"});  // Clear the previous ecommerce object & game + запись значения user_id.
 
 dataLayer.push({
   event: "begin_checkout",
@@ -161,10 +161,10 @@ dataLayer.push({
 
 Массив items должен быть тот, что участвует в событии (выбранные предметы при “Claim” или все при “Claim all”
 
-### Пример:
+### Пример
 
 ```js
-dataLayer.push({ ecommerce: null, game: undefined, user_id: "<user id>" }); // Clear the previous ecommerce object & game + запись значения user_id.
+dataLayer.push({ecommerce: null, game: undefined, user_id: "<user id>"}); // Clear the previous ecommerce object & game + запись значения user_id.
 
 dataLayer.push({
   event: "add_payment_info",
@@ -195,14 +195,14 @@ dataLayer.push({
 
 [https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client\_type=gtm\#begin\_checkout](https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#begin_checkout)
 
-Лучше изменить текущую реализацию: вместо отдельного события на каждый item отправлять события по числу сформированных трейдов, в которых один trade\_id на уровене события и массив элементов items.   
+Лучше изменить текущую реализацию: вместо отдельного события на каждый item отправлять события по числу сформированных трейдов, в которых один trade\_id на уровене события и массив элементов items.
 НО\!\!\! для случаев, когда в одном трейде участвуют items цена, которых номинирована в разных валютах, нужно разбить трейд на события с унакльным currency.  
 *Объединение в одно собтие важно для борьбы с лимитами (1 млн. событий), которые считается в события.*
 
-### Пример:
+### Пример
 
 ```js
-dataLayer.push({ ecommerce: null, game: undefined, user_id: "<user id>" });  // Clear the previous ecommerce object & game + запись значения user_id.
+dataLayer.push({ecommerce: null, game: undefined, user_id: "<user id>"});  // Clear the previous ecommerce object & game + запись значения user_id.
 
 dataLayer.push({
   event: "add_shipping_info",
@@ -239,10 +239,10 @@ dataLayer.push({
 ![][image2]  
  В массиве items нужно передать только те item, которые ассоциированны с выбранным продавцом.
 
-### Пример:
+### Пример
 
 ```js
-dataLayer.push({ ecommerce: null, game: undefined, user_id: "<user id>" });  // Clear the previous ecommerce object & game + запись значения user_id.
+dataLayer.push({ecommerce: null, game: undefined, user_id: "<user id>"});  // Clear the previous ecommerce object & game + запись значения user_id.
 
 dataLayer.push({
   event: "select_item",
@@ -275,7 +275,7 @@ dataLayer.push({
 
 [https://developers.google.com/analytics/devguides/collection/protocol/ga4](https://developers.google.com/analytics/devguides/collection/protocol/ga4)
 
-### Относительно валюты есть два варианта:
+### Относительно валюты есть два варианта
 
 1\. либо переводите всё в USD по  актуальному курсу  
 2\. либо отправляйте в валюте покупки, но меняйте значение поля currency
@@ -287,9 +287,9 @@ dataLayer.push({
 
 [https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events?hl=en\#purchase](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events?hl=en#purchase)
 
-### URL:
+### URL
 
-https://www.google-analytics.com/mp/collect?measurement\_id={{Measurement Id}}\&api\_secret={{api\_secret}}
+<https://www.google-analytics.com/mp/collect?measurement\_id={{Measurement> Id}}\&api\_secret={{api\_secret}}
 
 api\_secret \- передам отдельно (разный для разных Measurement Id)
 
@@ -300,7 +300,7 @@ G-DQVK2T5J38 \- adoptme
 G-WC65EMVYN5 \-mm2  
 G-21GMVZZR2S \- STEAL\_BRAINROT
 
-### Body:
+### Body
 
 Обязательный свойства: client\_id, user\_id, массив events  
 Массив events: name \+ объект params
